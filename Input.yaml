@@ -1,0 +1,38 @@
+####################################
+## DIA PTM collapsing parameters
+main:
+ report: '20230308_091202_R02_PhosphoDIA_Pro_DDALibrary_Report.tsv'
+ fasta_path: 'Y:\\LabMembers\\Tan\\DIA_QuantitativePTMs\\Searching\\Database_Human_with_SyntheticpY\\UniProt.PyPeptides.human.20141017.RNFISnr.150contams.fasta'   #USER INPUT -- path to fasta file
+ engine: 'SN'                                                          #USER INPUT -- DIA-NN: "DIANN", Spectronaut: "SN"
+ organism: 'human'                                                     #USER INPUT 
+
+SN:
+ heavies: ['+10', '+8']                                                #USER INPUT    
+ target_ptm: '+80'                                                     #USER INPUT -- Phospho: '+80', KGG: '+114'
+ experimental: ['[+16]', '[+57]', '_[+42]','_']                        #USER INPUT -- Oxidized methionine: '[+16]', Carbamidomethylation: '[+57]', N-term acetylation: '_[+42]'
+ ptm_confidence_threshold: 0.00                                        #USER INPUT -- Regular: 0.75, Stringent: 0.99
+ file: 'R.FileName'
+ all_sequences: 'FG.IntMID'
+ prot_column: 'PG.ProteinAccessions' 
+ keep : ['Collapse','R.Condition','R.FileName', 'R.Replicate', 'PG.Genes','PG.Organisms', 'PG.ProteinAccessions', 'PG.IBAQ', 'PG.Quantity', 'PEP.PeptidePosition', 'PEP.Quantity', 'EG.IntPIMID', 'EG.ProteinPTMLocations','EG.PTMAssayProbability','EG.PTMLocalizationProbabilities','EG.Cscore','EG.IntCorrScore','FG.Charge','FG.IntMID','FG.CalibratedMassAccuracy (PPM)']
+
+
+DIANN:
+ heavies: ['UniMod:259', 'UniMod:267']                                 #USER INPUT
+ target_ptm: 'UniMod:21'                                               #USER INPUT -- Phospho: 'UniMod:21', KGG: 'UniMod:121'
+ experimental: ['(UniMod:35)','(UniMod:4)','(UniMod:1)']               #USER INPUT -- Oxidized methionine: '(UniMod:35)', Carbamidomethylation: '(UniMod:4)', N-term acetylation: '(UniMod:1)'
+ ptm_confidence_threshold: 0.0                                         #USER INPUT -- Regular: 0.01, Stringent: 0.51
+ file: 'File.Name'
+ all_sequences: 'Modified.Sequence'
+ prot_column: 'Protein.Ids'
+ keep : ['Collapse', 'Protein.Group', 'Protein.Ids', 'Protein.Names', 'Genes', 'First.Protein.Description','Proteotypic', 'Stripped.Sequence', 'Modified.Sequence', 'Precursors_Heavies','Precursor.Id', 'start', 'end','PTMsites', 'PTMtypes']
+
+
+phrases:                           #If target PTM is not phospho or GlyGly this section needs to be appended to
+ ('+80','UniMod:21'): 'Phospho'
+ ('+114', 'UniMod:121'): 'GlyGly'
+
+
+
+
+
