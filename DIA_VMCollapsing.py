@@ -1,11 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
-from IPython.display import display, HTML
-display(HTML("<style>.container { width:100% !important; }</style>"))
 
 
 # In[2]:
