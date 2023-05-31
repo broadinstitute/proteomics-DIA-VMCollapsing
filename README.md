@@ -1,4 +1,6 @@
 # proteomics-DIA-VMCollapsing
+
+REQUIRES PYTHON 3.8 TO RUN 
 Performs VM collapsing on Spectronaut and DIA-NN data
 
 In yaml file:
